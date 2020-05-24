@@ -1,0 +1,17 @@
+UPDATE [dbo].[PREDICTALatestPredictions] SET intEarnedPoints = intEarnedPoints + 5 
+WHERE intMatchNo=43 AND intUserCode IN (25,9,13,19,4,21,28)
+UPDATE [dbo].[PREDICTAUserPredictionsRecord] SET intEarnedPoints = intEarnedPoints + 5 
+WHERE intMatchNo=43 AND intUserCode IN (25,9,13,19,4,21,28)
+
+DELETE FROM PREDICTATotalScores
+INSERT INTO PREDICTATotalScores
+SELECT intUserCode,SUM(intEarnedPoints) FROM PREDICTALatestPredictions GROUP BY intUserCode
+UNION
+SELECT intUserCode,0 FROM [dbo].[PREDICTAUsers] WHERE intUserCode NOT IN (
+		SELECT DISTINCT intUserCode FROM PREDICTALatestPredictions)
+
+
+SELECT * FROM [dbo].[PREDICTATeamPlayers] WHERE intTeamCode=3
+SELECT * FROM [dbo].[PREDICTALatestPredictions] WHERE intMatchNo=43 
+SELECT * FROM [dbo].[PREDICTAUserPredictionsRecord] WHERE intMatchNo=43 
+SELECT * FROM [dbo].[PREDICTAUsers]

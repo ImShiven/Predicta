@@ -1,0 +1,28 @@
+grid search with blank text
+admin page with dac
+remove identity from user table and alter add user sp
+start tour - -> whts this?
+dashboard days name check
+
+ADD ( commaSeperatedValues +"," )COMMA TO FOR DISTINCT NAMES ON HOME PAGE IN DAC
+
+----------
+home
+----------
+export to excel.
+show all.
+alter get sp to show all data.
+column headers width.
+remove class .clsgrid from header table.
+remove count logic
+------------------------------------------------
+players and matches tabs - no change on dashboard
+------------------------------------------------
+show all link and js function.
+remove class .clsgrid from header table.
+column names ordering - player code , name, nick name,team.
+remove count logic
+
+
+
+

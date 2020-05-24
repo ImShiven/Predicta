@@ -1,0 +1,23 @@
+sp_helptext '[dbo].[spPREDICTAUpdatePointsAndResults]'
+
+
+select * from [dbo].[PREDICTAMatchSchedule]
+select * from [dbo].[PREDICTATeams]
+select * from [dbo].[PREDICTATotalScores]
+select * from [dbo].[PREDICTALatestPredictions]
+select * from [dbo].[PREDICTAUserPredictionsRecord]
+select * from [dbo].[PREDICTAUsers]
+
+UPDATE [dbo].[PREDICTATeams] SET intWon = intWon - 1 WHERE intTeamCode = 3
+
+UPDATE [dbo].[PREDICTATeams] SET intLost = intLost - 1 WHERE intTeamCode = 4
+
+DELETE FROM [dbo].[PREDICTALatestPredictions] WHERE intMatchNo = 11
+DELETE FROM [dbo].[PREDICTAUserPredictionsRecord] WHERE intMatchNo = 11
+DELETE FROM PREDICTATotalScores
+INSERT INTO PREDICTATotalScores
+SELECT intUserCode,SUM(intEarnedPoints) FROM PREDICTALatestPredictions GROUP BY intUserCode
+UNION
+SELECT intUserCode,0 FROM [dbo].[PREDICTAUsers] WHERE intUserCode NOT IN (
+SELECT DISTINCT intUserCode FROM PREDICTALatestPredictions
+		)

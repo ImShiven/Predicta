@@ -1,0 +1,10 @@
+sp_helptext '[dbo].[spPREDICTAGetDataForDashBoard]'
+
+
+select * from [dbo].[PREDICTAMatchSchedule]
+select * from [dbo].[PREDICTATeams]
+select * from [dbo].[PREDICTATotalScores]
+select * from [dbo].[PREDICTALatestPredictions]
+select * from [dbo].[PREDICTAUserPredictionsRecord]
+select * from [dbo].[PREDICTAUsers]
+
